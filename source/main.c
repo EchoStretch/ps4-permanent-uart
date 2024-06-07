@@ -19,8 +19,11 @@ int _main(struct thread *td) {
   enable_perm_uart();
 
   initSysUtil();
+  char fw_version[6] = {0};
 
-  printf_notification("Enabled UART!");
+  get_firmware_string(fw_version);
+
+  printf_notification("Enabled UART!\nPS4 Firmware %s", fw_version);
 
 #ifdef DEBUG_SOCKET
   printf_debug("Closing socket...\n");
